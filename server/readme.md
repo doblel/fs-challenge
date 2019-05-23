@@ -37,7 +37,7 @@
 * Handle internal errors
 * Validate account email:
   * Valid email direction
-  * Unique value in database
+  * ~~Unique value in database~~
 * ~~More specific configuration objects~~.
 * Improve app instantiation:
   * Encapsulate app instantiation within a function.  
