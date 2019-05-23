@@ -7,7 +7,7 @@
 3. Update `config.py` with your database name and credentials.
 4. Run application with Flask cli:
    1. Set up flask app environment variable `set FLASK_APP=app.py`.
-   2. Run application `flask run`. No need to set FLASK_APP again on server restart.
+   2. Run application `flask run`. No need to set `FLASK_APP` again on server restart.
 
 ### Api structure
 
