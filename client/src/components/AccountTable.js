@@ -18,8 +18,8 @@ const accountTable = ({ items, onEditAction, onDeleteAction, isLoading }) => {
         width={150}
         render={(t, item) => (
           <div style={actionButtonStyles}>
-            <Button style={buttonMargins} type="default" icon="edit" onClick={() => onEditAction(item)}></Button>
-            <Button style={buttonMargins} type="danger" icon="delete" onClick={() => onDeleteAction(item)}></Button>
+            <Button style={buttonMargins} type="default" icon="edit" onClick={() => onEditAction(item)} />
+            <Button style={buttonMargins} type="danger" icon="delete" onClick={() => onDeleteAction(item)} />
           </div>
         )}
       />
