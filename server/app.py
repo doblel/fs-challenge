@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 
 from .config import DevelopmentConfig
 from .extensions import db
@@ -16,6 +17,8 @@ def create_app(configurationObject):
     return app
 
 app = create_app(DevelopmentConfig)
+
+CORS(app)
 
 api = Api(app, prefix='/api')
 api.add_resource(AccountsResource, '/accounts', '/accounts/<int:account_id>')

@@ -21,7 +21,7 @@ class AccountsResource(Resource):
     @marshal_with(account_dto)
     def post(self):
         if not 'email' in request.json:
-            return {"error": "email is required"}
+            return {"error": "email is required"}, 422
 
         account = Account(email=request.json['email'])
 
@@ -42,11 +42,10 @@ class AccountsResource(Resource):
 
         return marshal(account, account_dto), 200   
 
-    @marshal_with(account_dto)
     def delete(self, account_id=None):
         account = Account.query.get(account_id)
 
         db.session.delete(account)
         db.session.commit()
 
-        return marshal(account, account_dto), 200
+        return True, 200
