@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Form, Input, Button } from 'antd';
 
 const AccountModal = ({ item, loading, onCancel, onSave }) => {
-  const [email, setEmail] = useState(item.email)
-  const modalTitle = !!email ? 'Update account' : 'Create account'
+  const [email, setEmail] = useState(item.email);
+  const modalTitle = !!email ? 'Update account' : 'Create account';
 
   const buttonProps = { 
     form: 'accountModalForm',
@@ -11,12 +11,12 @@ const AccountModal = ({ item, loading, onCancel, onSave }) => {
     disabled: !email || loading || email === item.email,
     loading: loading,
     type: 'primary',
-  }
+  };
 
-  const submitForm = e => {
+  const submitForm = (e) => {
     e.preventDefault();
     onSave({ ...item, email })
-  }
+  };
 
   return (
     <Modal
@@ -37,7 +37,7 @@ const AccountModal = ({ item, loading, onCancel, onSave }) => {
           value={email}
           autoFocus={true}
           type="email"
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </Form>
     </Modal>
