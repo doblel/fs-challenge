@@ -8,6 +8,8 @@
 4. Run application with Flask cli:
    1. Set up flask app environment variable `set FLASK_APP=app.py`.
    2. Run application `flask run`. No need to set `FLASK_APP` again on server restart.
+   
+#### Note: If you change application's port make or root `/api` endpoint sure to update it on `client/src/api.js`
 
 ### Api structure
 
