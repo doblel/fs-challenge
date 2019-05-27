@@ -5,14 +5,17 @@ const AccountModal = ({ item, loading, onCancel, onSave }) => {
   const [email, setEmail] = useState(item.email)
   const modalTitle = !!email ? 'Update account' : 'Create account'
 
-
-  const buttonProps = {
+  const buttonProps = { 
     form: 'accountModalForm',
     htmlType: 'submit',
     disabled: !email || loading || email === item.email,
     loading: loading,
     type: 'primary',
-    onClick: () => onSave({ ...item, email })
+  }
+
+  const submitForm = e => {
+    e.preventDefault();
+    onSave({ ...item, email })
   }
 
   return (
@@ -29,7 +32,7 @@ const AccountModal = ({ item, loading, onCancel, onSave }) => {
         </Button>,
       ]}
     >
-      <Form id="accountModalForm">
+      <Form id="accountModalForm" onSubmit={submitForm}>
         <Input placeholder="john@example.com"
           value={email}
           autoFocus={true}

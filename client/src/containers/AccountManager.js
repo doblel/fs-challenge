@@ -4,6 +4,8 @@ import { Button, Modal, Card } from 'antd';
 import AccountTable from '../components/AccountTable';
 import AccountModal from '../components/AccountModal';
 
+import Api from '../api';
+
 class App extends Component {
   state = {
     accounts: [],
@@ -16,18 +18,18 @@ class App extends Component {
     confirmDeleteModalVisible: false
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ loadingAccounts: true })
-    setTimeout(() => {
+
+    try {
+      const response = await Api.getAccounts();
       this.setState({
         loadingAccounts: false,
-        accounts: [
-          { id: 1, email: 'lisandrolucatti@gmail.com' },
-          { id: 2, email: 'doblel@test.com' },
-          { id: 3, email: 'apolo@cats.com' }
-        ]
+        accounts: await response.json()
       });
-    }, 3000);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   deleteHandler = account => {
@@ -60,18 +62,30 @@ class App extends Component {
   }
 
   // http calls
-  deleteAccount = account => {
-    const accounts = this.state.accounts.slice();
+  deleteAccount = async account => {
+    const backUp = this.state.accounts.slice();
 
-    this.setState({
-      accounts: accounts.filter(acc => acc.id !== account.id)
-    });
+    this.setState(prevState => ({
+      accounts: prevState.accounts.filter(acc => acc.id !== account.id)
+    }));
+
+    try {
+      await Api.deleteAccount(account.id);
+    } catch (error) {
+      console.log(error);
+      // if delete fails, restore the accounts to have it again and in the same order
+      this.setState({
+        accounts: backUp
+      });
+    }
   }
 
-  updateAccount = account => {
+  updateAccount = async account => {
     this.setState({ requestInProgress: true });
 
-    setTimeout(() => {
+    try {
+      await Api.updateAccount(account);
+
       const idx = this.state.accounts.findIndex(a => a.id === account.id);
       const accounts = this.state.accounts.slice();
 
@@ -82,25 +96,31 @@ class App extends Component {
         accounts,
         accountModalVisible: false
       });
-    }, 1500)
+    } catch (error) {
+      console.log(error);
+      this.setState({ requestInProgress: false });
+    }
   }
 
-  createAccount = account => {
+  createAccount = async account => {
     this.setState({ requestInProgress: true });
 
-    setTimeout(() => {
+    try {
+      const response = await Api.createAccount(account);
+      const newAccount = await response.json();
+
       this.setState(prevState => ({
         requestInProgress: false,
         accounts: [
           ...prevState.accounts,
-          {
-            id: prevState.accounts.length + 1,
-            email: account.email
-          }
+          newAccount
         ],
         accountModalVisible: false
       }));
-    }, 1500)
+    } catch (error) {
+      console.log(error);
+      this.setState({ requestInProgress: false });
+    }
   }
 
   render() {
