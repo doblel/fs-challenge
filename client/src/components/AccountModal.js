@@ -10,7 +10,7 @@ const AccountModal = ({ item, loading, onCancel, onSave }) => {
     htmlType: 'submit',
     disabled: !email || loading || email === item.email,
     loading: loading,
-    type: 'primary',
+    type: 'primary'
   };
 
   const submitForm = (e) => {
@@ -29,7 +29,7 @@ const AccountModal = ({ item, loading, onCancel, onSave }) => {
         </Button>,
         <Button key="confirm" {...buttonProps}>
           Save
-        </Button>,
+        </Button>
       ]}
     >
       <Form id="accountModalForm" onSubmit={submitForm}>
