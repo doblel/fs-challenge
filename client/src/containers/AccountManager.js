@@ -31,7 +31,7 @@ class App extends Component {
     }
   }
 
-  deleteHandler = account => {
+  deleteHandler = (account) => {
     Modal.warning({
       title: 'Are you sure?',
       content: `${account.email} will be deleted.`,
@@ -39,7 +39,7 @@ class App extends Component {
     })
   }
 
-  editHandler = account => {
+  editHandler = (account) => {
     this.setState({
       modalItem: { ...account },
       accountModalVisible: true
@@ -53,7 +53,7 @@ class App extends Component {
     });
   }
 
-  persistHandler = account => {
+  persistHandler = (account) => {
     if (!!account.id)
       this.updateAccount(account);
     else
@@ -61,11 +61,11 @@ class App extends Component {
   }
 
   // http calls
-  deleteAccount = async account => {
+  deleteAccount = async (account) => {
     const backUp = this.state.accounts.slice();
 
-    this.setState(prevState => ({
-      accounts: prevState.accounts.filter(acc => acc.id !== account.id)
+    this.setState((prevState) => ({
+      accounts: prevState.accounts.filter((acc) => acc.id !== account.id)
     }));
 
     try {
@@ -79,13 +79,13 @@ class App extends Component {
     }
   }
 
-  updateAccount = async account => {
+  updateAccount = async (account) => {
     this.setState({ requestInProgress: true });
 
     try {
       await Api.updateAccount(account);
 
-      const idx = this.state.accounts.findIndex(a => a.id === account.id);
+      const idx = this.state.accounts.findIndex((a) => a.id === account.id);
       const accounts = this.state.accounts.slice();
 
       accounts[idx].email = account.email;
@@ -101,7 +101,7 @@ class App extends Component {
     }
   }
 
-  createAccount = async account => {
+  createAccount = async (account) => {
     this.setState({ requestInProgress: true });
 
     try {
