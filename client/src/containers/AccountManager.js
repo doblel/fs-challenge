@@ -14,8 +14,7 @@ class App extends Component {
     },
     loadingAccounts: false,
     requestInProgress: false,
-    accountModalVisible: false,
-    confirmDeleteModalVisible: false
+    accountModalVisible: false
   }
 
   async componentDidMount() {
