@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'http://localhost:5000/api';
 
 export default {
   getAccounts: () => fetch(`${API_URL}/accounts`),
