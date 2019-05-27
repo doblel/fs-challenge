@@ -11,7 +11,7 @@ const accountTable = ({ items, onEditAction, onDeleteAction, isLoading }) => {
   const actionButtonStyles = { textAlign: 'right' };
 
   return (
-    <Table dataSource={items} rowKey={item => item.id} pagination={false} loading={isLoading}>
+    <Table dataSource={items} rowKey={(item) => item.id} pagination={false} loading={isLoading}>
       <Column title="Email" dataIndex="email" key="email" />
       <Column
         key="actions"
