@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    this.setState({ loadingAccounts: true })
+    this.setState({ loadingAccounts: true });
 
     try {
       const response = await Api.getAccounts();
@@ -35,8 +35,8 @@ class App extends Component {
     Modal.warning({
       title: 'Are you sure?',
       content: `${account.email} will be deleted.`,
-      onOk: () => this.deleteAccount(account),
-    })
+      onOk: () => this.deleteAccount(account)
+    });
   }
 
   editHandler = (account) => {
@@ -126,7 +126,7 @@ class App extends Component {
     const headerStyles = {
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '10px',
+      marginBottom: '10px'
     };
     return (
       <Card>
