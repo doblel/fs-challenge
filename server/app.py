@@ -4,6 +4,7 @@ from flask_cors import CORS
 
 from .config import DevelopmentConfig
 from .extensions import db
+from .exceptions import api_errors
 from .accounts import AccountsResource
 
 def create_app(configurationObject):
@@ -20,9 +21,10 @@ app = create_app(DevelopmentConfig)
 
 CORS(app)
 
-api = Api(app, prefix='/api')
+api = Api(app, prefix='/api', errors=api_errors)
 api.add_resource(AccountsResource, '/accounts', '/accounts/<int:account_id>')
 
 @app.route('/')
 def index():
     return 'All resources are exposed under /api prefix'
+

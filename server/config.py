@@ -1,6 +1,7 @@
 class Config(object):
     DEBUG = False
     TESTING = False
+    SECRET_KEY = 'S3CR3T!'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:admin@localhost/fs-challenge'
 
@@ -17,6 +18,7 @@ class StagingConfig(Config):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+    TESTING = True
 
 
 class TestingConfig(Config):
