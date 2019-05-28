@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Card } from 'antd';
+import { Button, Modal, Card, notification } from 'antd';
 
 import AccountTable from '../components/AccountTable';
 import AccountModal from '../components/AccountModal';
@@ -24,10 +24,10 @@ class App extends Component {
       const response = await Api.getAccounts();
       this.setState({
         loadingAccounts: false,
-        accounts: await response.json(),
+        accounts: response.data,
       });
     } catch (error) {
-      console.log(error);
+      this.setState({ loadingAccounts: false });
     }
   }
 
@@ -69,7 +69,11 @@ class App extends Component {
     try {
       await Api.deleteAccount(account.id);
     } catch (error) {
-      console.log(error);
+      const { data } = error.response;
+      notification.error({
+        message: 'Error',
+        description: data.message,
+      });
       // if delete fails, restore the accounts to have it again and in the same order
       this.setState({
         accounts: backUp,
@@ -88,13 +92,22 @@ class App extends Component {
 
       accounts[idx].email = account.email;
 
+      notification.success({
+        message: 'Account updated',
+        description: `${account.email} successfully saved.`,
+      });
+
       this.setState({
         requestInProgress: false,
         accounts,
         accountModalVisible: false,
       });
     } catch (error) {
-      console.log(error);
+      const { data } = error.response;
+      notification.error({
+        message: 'Error',
+        description: data.message,
+      });
       this.setState({ requestInProgress: false });
     }
   };
@@ -104,7 +117,12 @@ class App extends Component {
 
     try {
       const response = await Api.createAccount(account);
-      const newAccount = await response.json();
+      const newAccount = response.data;
+
+      notification.success({
+        message: 'Account created',
+        description: `${newAccount.email} successfully saved.`,
+      });
 
       this.setState((prevState) => ({
         requestInProgress: false,
@@ -112,7 +130,11 @@ class App extends Component {
         accountModalVisible: false,
       }));
     } catch (error) {
-      console.log(error);
+      const { data } = error.response;
+      notification.error({
+        message: 'Error',
+        description: data.message,
+      });
       this.setState({ requestInProgress: false });
     }
   };

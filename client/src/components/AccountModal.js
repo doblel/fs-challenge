@@ -3,7 +3,7 @@ import { Modal, Form, Input, Button } from 'antd';
 
 const AccountModal = ({ item, loading, onCancel, onSave }) => {
   const [email, setEmail] = useState(item.email);
-  const modalTitle = !!email ? 'Update account' : 'Create account';
+  const modalTitle = !!item.id ? 'Update account' : 'Create account';
 
   const buttonProps = {
     form: 'accountModalForm',
