@@ -40,7 +40,7 @@
 ### To do
 * Scripts / Commands to Create, Drop and Migrate database.
 * ~~Add the correct Http StatusCode to Api responses~~.
-* Human friendly error responses
+* ~~Human friendly error responses~~.
 * Handle internal errors
 * Validate account email:
   * Valid email direction
@@ -53,3 +53,4 @@
 
 ### Deploy optimizations
 * Load config values within `config.py` from environment variables for security.
+* Log request and errors
