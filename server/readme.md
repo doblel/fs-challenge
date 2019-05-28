@@ -11,6 +11,11 @@
    
 #### Note: If you change application's port make or root `/api` endpoint sure to update it on `client/src/api.js`
 
+### Core dependencies
+* Flask-SQLAlchemy: Database ORM
+* Flask-Cors: Enable cors
+* Flask-RESTful: Api resource handling out of the box
+
 ### Api structure
 
 ```
