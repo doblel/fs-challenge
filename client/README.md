@@ -24,5 +24,5 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### To do
-* Add toaster to handle server errors.
+* ~~Add toaster to handle server errors~~.
 * Test components.
