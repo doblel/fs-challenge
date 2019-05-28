@@ -34,7 +34,7 @@
 
 ### To do
 * Scripts / Commands to Create, Drop and Migrate database.
-* ~~Add the correct Http StatusCode to Api responses.
+* ~~Add the correct Http StatusCode to Api responses~~.
 * Human friendly error responses
 * Handle internal errors
 * Validate account email:
