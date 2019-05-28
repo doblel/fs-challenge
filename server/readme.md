@@ -9,7 +9,7 @@
    1. Set up flask app environment variable `set FLASK_APP=app.py`.
    2. Run application `flask run`. No need to set `FLASK_APP` again on server restart.
    
-#### Note: If you change application's port make or root `/api` endpoint sure to update it on `client/src/api.js`
+#### Note: If you change application's port  or root `/api` endpoint make sure to update it on `client/src/api.js`
 
 ### Core dependencies
 * Flask-SQLAlchemy: Database ORM
