@@ -11,6 +11,11 @@
    
 #### Note: If you change application's port make or root `/api` endpoint sure to update it on `client/src/api.js`
 
+### Core dependencies
+* Flask-SQLAlchemy: Database ORM
+* Flask-Cors: Enable cors
+* Flask-RESTful: Api resource handling out of the box
+
 ### Api structure
 
 ```
@@ -34,17 +39,18 @@
 
 ### To do
 * Scripts / Commands to Create, Drop and Migrate database.
-* Add the correct HttpCode to Api responses.
-* Human friendly error responses
+* ~~Add the correct Http StatusCode to Api responses~~.
+* ~~Human friendly error responses~~.
 * Handle internal errors
 * Validate account email:
   * Valid email direction
   * ~~Unique value in database~~
 * ~~More specific configuration objects~~.
 * Improve app instantiation:
-  * Encapsulate app instantiation within a function.  
+  * ~~Encapsulate app instantiation within a function~~.  
   * Change config object dynamically based on environment mode.
 
 
 ### Deploy optimizations
 * Load config values within `config.py` from environment variables for security.
+* Log request and errors
