@@ -1,7 +1,6 @@
 ## Full stack challenge
 
 ### A simple -yet functional- account manager app (crud)
-![Alt Text](demo.gif)
 
 #### Note:
 This documentation is based on a machine with windows 10. Since most of the commands are python and npm / node, these will not vary based on your OS but keep in mind that they will change commands such as assigning environment variables.
