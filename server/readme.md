@@ -34,7 +34,7 @@
 
 ### To do
 * Scripts / Commands to Create, Drop and Migrate database.
-* Add the correct HttpCode to Api responses.
+* ~~Add the correct Http StatusCode to Api responses.
 * Human friendly error responses
 * Handle internal errors
 * Validate account email:
@@ -42,7 +42,7 @@
   * ~~Unique value in database~~
 * ~~More specific configuration objects~~.
 * Improve app instantiation:
-  * Encapsulate app instantiation within a function.  
+  * ~~Encapsulate app instantiation within a function~~.  
   * Change config object dynamically based on environment mode.
 
 
